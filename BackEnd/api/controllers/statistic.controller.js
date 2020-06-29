@@ -1,8 +1,13 @@
 class StatisticController {
-  constructor() {}
+  constructor({ StatisticService }) {
+    this._StatisticService = StatisticService;
+  }
 
-  getStatistic(req, res) {
-    return res.send({ menssage: "estadisticas" });
+  async getStatistic(req, res) {
+    let statistics = await this._StatisticService.getAll();
+    return res.send({
+      menssage: statistics,
+    });
   }
 }
 

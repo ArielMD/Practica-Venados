@@ -1,8 +1,13 @@
 class PlayersController {
-  constructor() {}
+  constructor({ PlayerService }) {
+    this._PlayerService = PlayerService;
+  }
 
-  getPlayers(req, res) {
-    return res.send({ menssage: "players" });
+  async getPlayers(req, res) {
+    let players = await this._PlayerService.getAll();
+    return res.send({
+      menssage: players,
+    });
   }
 }
 

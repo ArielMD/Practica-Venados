@@ -3,6 +3,6 @@ const { Router } = require("express");
 module.exports = function ({ GamesController }) {
   const router = Router();
 
-  router.get("/", GamesController.getGames);
+  router.get("/", GamesController.getGames.bind(GamesController));
   return router;
 };

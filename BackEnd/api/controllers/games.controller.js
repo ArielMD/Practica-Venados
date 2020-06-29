@@ -1,8 +1,13 @@
 class GamesController {
-  constructor() {}
+  constructor({ GameService }) {
+    this._GameService = GameService;
+  }
 
-  getGames(req, res) {
-    return res.send({ menssage: "games" });
+  async getGames(req, res) {
+    let games = await this._GameService.getAll();
+    return res.send({
+      menssage: games,
+    });
   }
 }
 

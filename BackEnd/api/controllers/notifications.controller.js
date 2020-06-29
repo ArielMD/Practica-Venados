@@ -1,8 +1,13 @@
 class NotificationsController {
-  constructor() {}
+  constructor({ NotificationService }) {
+    this._NotificationService = NotificationService;
+  }
 
-  getNotifications(req, res) {
-    return res.send({ menssage: "notificatios" });
+  async getNotifications(req, res) {
+    let notifications = await this._NotificationService.getAll();
+    return res.send({
+      menssage: notifications,
+    });
   }
 }
 

@@ -1,8 +1,13 @@
 class SponsorsController {
-  constructor() {}
+  constructor({ SponsorService }) {
+    this._SponsorService = SponsorService;
+  }
 
-  getSponsors(req, res) {
-    return res.send({ menssage: "sponsors" });
+  async getSponsors(req, res) {
+    let sponsors = await this._SponsorService.getAll();
+    return res.send({
+      menssage: sponsors,
+    });
   }
 }
 

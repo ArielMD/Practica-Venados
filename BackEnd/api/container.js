@@ -19,6 +19,14 @@ const {
   SponsorsController,
 } = require("./controllers");
 
+const {
+  StatisticService,
+  GameService,
+  NotificationService,
+  PlayerService,
+  SponsorService,
+} = require("./services");
+
 const container = createContainer();
 
 container
@@ -43,6 +51,13 @@ container
     NotificationsRoutes: asFunction(NotificationsRoutes).singleton(),
     PlayersRoutes: asFunction(PlayersRoutes).singleton(),
     SponsorsRoutes: asFunction(SponsorsRoutes).singleton(),
+  })
+  .register({
+    StatisticService: asClass(StatisticService).singleton(),
+    GameService: asClass(GameService).singleton(),
+    NotificationService: asClass(NotificationService).singleton(),
+    PlayerService: asClass(PlayerService).singleton(),
+    SponsorService: asClass(SponsorService).singleton(),
   });
 
 module.exports = container;
